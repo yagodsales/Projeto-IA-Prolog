@@ -1,5 +1,4 @@
 from pyswip import Prolog
-import os
 
 prolog = Prolog()
 prolog.consult("prolog.pl")
