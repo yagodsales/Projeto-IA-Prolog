@@ -20,3 +20,7 @@ class PrologModel(Prolog):
 
         self.assertz(cria_cliente)
         self.assertz(cria_endereco)
+
+    def cadastrar_produto(self, nome, preco) -> None:
+        produto = f"produto(preco({nome}, {preco}))"
+        self.assertz(produto)

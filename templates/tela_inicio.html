@@ -2,15 +2,16 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="{{ url_for('static',filename='styles/global.css') }}" />
-		<title>TELA DE INICIO</title>
+		<title>NotaLog</title>
 	</head>
 	<body>
 		<div class="container">
 			<div class="page-header">
 				<h1>TELA DE INICIO</h1>
 			</div>
-			<div>
+			<div style="display: flex; flex-direction: column; gap: 2rem">
 				<a href="/cliente">Cadastrar cliente</a>
+				<a href="/produto">Cadastrar produto</a>
 				<a href="/nota-fiscal">Gerar nota fiscal</a>
 			</div>
 		</div>

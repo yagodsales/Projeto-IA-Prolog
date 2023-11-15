@@ -25,6 +25,20 @@ def cadastrar_cliente():
     return render_template("cadastrar_cliente.html", cadastrado=cadastrado)
 
 
+@app.route("/produto", methods=("GET", "POST"))
+def cadastrar_produto():
+    try:
+        nome = request.form["nome"]
+        preco = request.form["preco"]
+        prolog.cadastrar_produto(nome, preco)
+        cadastrado = f"Produto {nome} cadastrado com sucesso!"
+    except:
+        preco = ""
+        nome = ""
+        cadastrado = ""
+    return render_template("cadastrar_produto.html", cadastrado=cadastrado)
+
+
 @app.route("/nota-fiscal", methods=("GET", "POST"))
 def gerar_nota_fiscal():
     return render_template("formulario.html")
