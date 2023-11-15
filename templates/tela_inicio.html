@@ -1,33 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TELA DE INICIO</title>
-  </head>
-  <body>
-    <div class="container">
-        <div class="page-header">
-            <h1>{{titulo}}</h1>
-        </div>
-        <table class="table table-striped table-responsive table-bordered">
-            <thead class="thead-default">
-                <tr>
-                    <th>Nome</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Prolog</td>
-                </tr>
-                <tr>
-                    <td>Skyrim</td>
-                </tr>
-                <tr>
-                    <td>Valorant</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-  </body>
+	<head>
+		<link rel="stylesheet" href="{{ url_for('static',filename='styles/global.css') }}" />
+		<title>TELA DE INICIO</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="page-header">
+				<h1>TELA DE INICIO</h1>
+			</div>
+			<div>
+				<a href="/cliente">Cadastrar cliente</a>
+				<a href="/nota-fiscal">Gerar nota fiscal</a>
+			</div>
+		</div>
+	</body>
 </html>

@@ -1,5 +1,7 @@
 :- dynamic produto/1.
 :- dynamic estoque/2.
+:- dynamic cliente/1.
+:- dynamic endereco/2.
 
 % Definir os clientes e seus endereços
 cliente(joao).
@@ -42,7 +44,7 @@ aplicar_desconto(Produto, Quantidade, Desconto) :-
     Desconto is PrecoUnitario * Quantidade * 0.05. % 5% de desconto
 
 % Regra para emitir uma nota fiscal
-emitir_nota(Produtos) :-
+emitir_nota(Produtos, Total) :-
     calcular_total(Produtos, Total),
     write('Nota fiscal:'), nl,
     imprimir_produtos(Produtos),
@@ -79,7 +81,7 @@ imprimir_produtos([(Produto, Quantidade) | Resto]) :-
     write(Produto), write(' x '), write(Quantidade), nl,
     imprimir_produtos(Resto).
 
-emitir_nota_com_impostos_e_estoque(Produtos, Cliente) :-
+emitir_nota_com_impostos_e_estoque(Produtos, Cliente, Total, ICMS, ISS, PIS, PASEP, COFINS, CSLL, IRPJ, INSS) :-
     verificar_estoque(Produtos),
     calcular_total(Produtos, Total),
     calcular_icms(Total, ICMS),
