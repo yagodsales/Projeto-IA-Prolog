@@ -106,5 +106,5 @@ emitir_nota_com_impostos_e_estoque(Produtos, Cliente, Total, ICMS, ISS, PIS, PAS
     write('CSLL: $'), write(CSLL), nl,
     write('IRPJ: $'), write(IRPJ), nl,
     write('INSS: $'), write(INSS), nl,
-    TotalComImpostos is Total + ICMS + ISS,
+    TotalComImpostos is Total + ICMS + ISS + PIS + PASEP + COFINS + CSLL + IRPJ + INSS,
     write('Total com impostos: $'), write(TotalComImpostos).
