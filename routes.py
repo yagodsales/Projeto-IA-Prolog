@@ -16,11 +16,10 @@ def cadastrar_cliente():
     try:
         nome = request.form["nome"]
         endereco = request.form["endereco"]
+
         prolog.cadastrar_cliente(nome, endereco)
         cadastrado = f"Cliente {nome} cadastrado com sucesso!"
     except:
-        endereco = ""
-        nome = ""
         cadastrado = ""
     return render_template("cadastrar_cliente.html", cadastrado=cadastrado)
 
@@ -33,10 +32,21 @@ def cadastrar_produto():
         prolog.cadastrar_produto(nome, preco)
         cadastrado = f"Produto {nome} cadastrado com sucesso!"
     except:
-        preco = ""
-        nome = ""
         cadastrado = ""
     return render_template("cadastrar_produto.html", cadastrado=cadastrado)
+
+
+@app.route("/fornecedor", methods=("GET", "POST"))
+def cadastrar_fornecedor():
+    try:
+        nome = request.form["nome"]
+        endereco = request.form["endereco"]
+
+        prolog.cadastrar_fornecedor(nome, endereco)
+        cadastrado = f"Fornecedor {nome} cadastrado com sucesso!"
+    except:
+        cadastrado = ""
+    return render_template("cadastrar_fornecedor.html", cadastrado=cadastrado)
 
 
 @app.route("/nota-fiscal", methods=("GET", "POST"))
@@ -57,7 +67,7 @@ def processa_prolog():
     data = request.form["data"]
     valor = request.form["valor"]
     produtos = request.form["produtos"]
-    # teste = prolog.emitir_nota(nome)
+    # nota = prolog.emitir_nota(nome)
     nota = prolog.emitir_nota_com_impostos_e_estoque(nome)
     return render_template("resposta.html", nome=nome, nota=nota)
 

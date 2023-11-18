@@ -11,7 +11,7 @@ class PrologModel(Prolog):
 
     def emitir_nota_com_impostos_e_estoque(self, nome) -> list:
         produtos = "[(iphone, 2), (macbook, 1), (apple_watch, 3)]"
-        query = f"emitir_nota_com_impostos_e_estoque({produtos}, {nome}, Total, ICMS, ISS, PIS, PASEP, COFINS, CSLL, IRPJ, INSS)"
+        query = f"emitir_nota_com_impostos_e_estoque({produtos}, {nome}, Total, ICMS, ISS, PIS, PASEP, COFINS, CSLL, IRPJ, INSS, TotalComImpostos)"
         return list(self.query(query))
 
     def cadastrar_cliente(self, nome, endereco) -> None:
@@ -19,6 +19,13 @@ class PrologModel(Prolog):
         cria_endereco = f'endereco({nome}, "{endereco}")'
 
         self.assertz(cria_cliente)
+        self.assertz(cria_endereco)
+
+    def cadastrar_fornecedor(self, nome, endereco) -> None:
+        cria_fornecedor = f"fornecedor({nome})"
+        cria_endereco = f'endereco({nome}, "{endereco}")'
+
+        self.assertz(cria_fornecedor)
         self.assertz(cria_endereco)
 
     def cadastrar_produto(self, nome, preco) -> None:

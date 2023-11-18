@@ -1,6 +1,8 @@
 :- dynamic produto/1.
 :- dynamic estoque/2.
 :- dynamic cliente/1.
+:- dynamic fornecedor/1.
+:- dynamic endereco/2.
 :- dynamic endereco/2.
 
 % Definir os clientes e seus endereços
@@ -8,6 +10,12 @@ cliente(joao).
 cliente(maria).
 endereco(joao, "Rua da Amostra, 123").
 endereco(maria, "Rua da festa, 654").
+
+% Definir os fornecedor e seus endereços
+fornecedor(jose).
+fornecedor(claudia).
+endereco(jose, "Rua da Amostra, 123").
+endereco(claudia, "Rua da festa, 654").
  
 % Definir os produtos e seus preços por unidade
 produto(preco(iphone, 1000)).
@@ -16,10 +24,10 @@ produto(preco(apple_watch, 400)).
 produto(preco(ipad, 800)).
 
 % Verificar estoque
-estoque(iphone, 10).
-estoque(macbook, 5).
-estoque(apple_watch, 7).
-estoque(ipad, 1).
+estoque(iphone, 10000000).
+estoque(macbook, 10000000).
+estoque(apple_watch, 10000000).
+estoque(ipad, 10000000).
 
 % Definir impostos
 calcular_icms(Total, Imposto) :- Imposto is Total * 0.18.
@@ -81,7 +89,7 @@ imprimir_produtos([(Produto, Quantidade) | Resto]) :-
     write(Produto), write(' x '), write(Quantidade), nl,
     imprimir_produtos(Resto).
 
-emitir_nota_com_impostos_e_estoque(Produtos, Cliente, Total, ICMS, ISS, PIS, PASEP, COFINS, CSLL, IRPJ, INSS) :-
+emitir_nota_com_impostos_e_estoque(Produtos, Cliente, Total, ICMS, ISS, PIS, PASEP, COFINS, CSLL, IRPJ, INSS, TotalComImpostos) :-
     verificar_estoque(Produtos),
     calcular_total(Produtos, Total),
     calcular_icms(Total, ICMS),
