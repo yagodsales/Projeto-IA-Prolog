@@ -2,18 +2,21 @@
 :- dynamic estoque/2.
 :- dynamic cliente/1.
 :- dynamic fornecedor/1.
-:- dynamic endereco/2.
-:- dynamic endereco/2.
+:- dynamic endereco/1.
 
 % Definir os clientes e seus endereços
 cliente(joao).
 cliente(maria).
-endereco(joao, "Rua da Amostra, 123").
-endereco(maria, "Rua da festa, 654").
 
 % Definir os fornecedor e seus endereços
 fornecedor(jose).
 fornecedor(claudia).
+
+% Definir endereço de clientes
+endereco(joao, "Rua da Amostra, 123").
+endereco(maria, "Rua da festa, 654").
+
+%Definir endereço de fornecedores
 endereco(jose, "Rua da Amostra, 123").
 endereco(claudia, "Rua da festa, 654").
  
