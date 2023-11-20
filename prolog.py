@@ -15,19 +15,22 @@ class PrologModel(Prolog):
         return list(self.query(query))
 
     def cadastrar_cliente(self, nome, endereco) -> None:
-        cria_cliente = f"cliente({nome})"
-        cria_endereco = f'endereco({nome}, "{endereco}")'
+        add_cliente = f"cliente({nome})"
+        add_endereco = f'endereco({nome}, "{endereco}")'
 
-        self.assertz(cria_cliente)
-        self.assertz(cria_endereco)
+        self.assertz(add_cliente)
+        self.assertz(add_endereco)
 
     def cadastrar_fornecedor(self, nome, endereco) -> None:
-        cria_fornecedor = f"fornecedor({nome})"
-        cria_endereco = f'endereco({nome}, "{endereco}")'
+        add_fornecedor = f"fornecedor({nome})"
+        add_endereco = f'endereco({nome}, "{endereco}")'
 
-        self.assertz(cria_fornecedor)
-        self.assertz(cria_endereco)
+        self.assertz(add_fornecedor)
+        self.assertz(add_endereco)
 
-    def cadastrar_produto(self, nome, preco) -> None:
-        produto = f"produto(preco({nome}, {preco}))"
-        self.assertz(produto)
+    def cadastrar_produto(self, nome, preco, estoque) -> None:
+        add_produto = f"produto(preco({nome}, {preco}))"
+        add_estoque = f"estoque({nome}, {estoque})"
+
+        self.assertz(add_produto)
+        self.assertz(add_estoque)

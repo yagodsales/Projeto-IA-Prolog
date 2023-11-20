@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=("GET", "POST"))
 def pagina_inicial():
-    return render_template("tela_inicio.html")
+    return render_template("home.html")
 
 
 @app.route("/cliente", methods=("GET", "POST"))
@@ -29,7 +29,9 @@ def cadastrar_produto():
     try:
         nome = request.form["nome"]
         preco = request.form["preco"]
-        prolog.cadastrar_produto(nome, preco)
+        estoque = request.form["estoque"]
+
+        prolog.cadastrar_produto(nome, preco, estoque)
         cadastrado = f"Produto {nome} cadastrado com sucesso!"
     except:
         cadastrado = ""

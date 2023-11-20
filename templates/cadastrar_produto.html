@@ -5,6 +5,12 @@
 		<title>NotaLog - Cadastrar Produto</title>
 	</head>
 	<body>
+		{% if cadastrado %}
+		<div class="container">
+			<h3>{{cadastrado}}</h3>
+		</div>
+		{% endif %}
+
 		<div class="container">
 			<a href="/">Voltar</a>
 
@@ -17,11 +23,11 @@
 				<label for="preco">Preço:</label>
 				<input type="number" id="preco" name="preco" />
 
+				<label for="estoque">Estoque:</label>
+				<input type="number" id="estoque" name="estoque" />
+
 				<button type="submit">Cadastrar produto</button>
 			</form>
-			<center>
-				<div>{{cadastrado}}</div>
-			</center>
 		</div>
 	</body>
 </html>

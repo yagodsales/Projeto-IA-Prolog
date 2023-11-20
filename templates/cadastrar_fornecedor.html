@@ -5,6 +5,12 @@
 		<title>NotaLog - Cadastrar Fornecedor</title>
 	</head>
 	<body>
+		{% if cadastrado %}
+		<div class="container">
+			<h3>{{cadastrado}}</h3>
+		</div>
+		{% endif %}
+
 		<div class="container">
 			<a href="/">Voltar</a>
 
@@ -19,9 +25,6 @@
 
 				<button type="submit">Cadastrar fornecedor</button>
 			</form>
-			<center>
-				<div>{{cadastrado}}</div>
-			</center>
 		</div>
 	</body>
 </html>
