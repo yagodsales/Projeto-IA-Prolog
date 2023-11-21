@@ -14,13 +14,14 @@ class PrologModel(Prolog):
         lista_linha_produto = produtos.split("\r\n")
 
         for linha_produto in lista_linha_produto:
+            if linha_produto.strip() == "":
+                continue
             query_produtos += f"({linha_produto}), "
 
         query_produtos = query_produtos[:-2]
         query_produtos += "]"
 
         query = f"emitir_nota_com_impostos_e_estoque({query_produtos}, {nome}, Total, ICMS, ISS, PIS, PASEP, COFINS, CSLL, IRPJ, INSS, TotalComImpostos)"
-        print(list(self.query(query)))
         return list(self.query(query))
 
     def cadastrar_cliente(self, nome, endereco) -> None:
