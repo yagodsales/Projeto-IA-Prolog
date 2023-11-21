@@ -2,7 +2,7 @@
 :- dynamic estoque/2.
 :- dynamic cliente/1.
 :- dynamic fornecedor/1.
-:- dynamic endereco/1.
+:- dynamic endereco/2.
 
 % Definir os clientes e seus endereços
 cliente(joao).
@@ -19,7 +19,7 @@ endereco(maria, "Rua da festa, 654").
 %Definir endereço de fornecedores
 endereco(jose, "Rua da Amostra, 123").
 endereco(claudia, "Rua da festa, 654").
- 
+
 % Definir os produtos e seus preços por unidade
 produto(preco(iphone, 1000)).
 produto(preco(macbook, 1500)).
@@ -119,3 +119,26 @@ emitir_nota_com_impostos_e_estoque(Produtos, Cliente, Total, ICMS, ISS, PIS, PAS
     write('INSS: $'), write(INSS), nl,
     TotalComImpostos is Total + ICMS + ISS + PIS + PASEP + COFINS + CSLL + IRPJ + INSS,
     write('Total com impostos: $'), write(TotalComImpostos).
+
+cadastrar_cliente(Cliente) :-
+    assertz(cliente(Cliente)),
+    write('Cliente:'), write(' [ '), write(Cliente), write(' ] cadastrado com sucesso!').
+
+cadastrar_endereco(Cliente, Endereco) :-
+ 	assertz(endereco(Cliente, Endereco)),
+    write('Endereco:'), write(' [ '), write(Cliente), write(', '), write(Endereco), write(' ] cadastrado com sucesso!').
+
+cadastrar_fornecedor(Fornecedor) :-
+	 assertz(fornecedor(Fornecedor)),
+     write('Fornecedor:'), write(' [ '), write(Fornecedor), write(' ] cadastrado com sucesso!').
+
+cadastrar_produto(Produto, Valor) :-
+	assertz(produto(preco(Produto, Valor))),
+    write('Produto:'), write(' [ '), write(Produto), write(', '), write(Valor), write(' ] cadastrado com sucesso!'). write().
+
+cadastrar_estoque(Produto, Estoque) :-
+    assertz(estoque(Produto, Estoque)),
+    write('Estoque:'), write(' [ '), write(Produto), write(', '), write(Estoque), write(' ] cadastrado com sucesso!').
+
+cancelar_nota :-
+    write('Nota fiscal cancelada com sucesso!').
