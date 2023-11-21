@@ -8,7 +8,7 @@ body {
 }
 
 .container {
-	max-width: 600px;
+	max-width: 900px;
 	background-color: #fff;
 	margin: 20px auto;
 	padding: 20px;
@@ -73,4 +73,30 @@ a {
 
 a:hover {
 	background-color: #2980b9;
+}
+
+p {
+	color: #303030;
+	font-size: 0.7rem;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th,
+td {
+	border: 1px solid #dddddd;
+	padding: 8px;
+	text-align: center;
+	font-weight: bold;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+tr:nth-child(odd) {
+	background-color: #ffffff;
 }

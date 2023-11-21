@@ -53,7 +53,7 @@ def cadastrar_fornecedor():
 
 @app.route("/nota-fiscal", methods=("GET", "POST"))
 def gerar_nota_fiscal():
-    return render_template("formulario.html")
+    return render_template("gerar_nota.html")
 
 
 @app.route(
@@ -63,15 +63,13 @@ def gerar_nota_fiscal():
     ],
 )
 def processa_prolog():
-    nome = request.form["nome"]
-    cnpj = request.form["cnpj"]
-    numero = request.form["numero"]
-    data = request.form["data"]
-    valor = request.form["valor"]
-    produtos = request.form["produtos"]
-    # nota = prolog.emitir_nota(nome)
-    nota = prolog.emitir_nota_com_impostos_e_estoque(nome)
-    return render_template("resposta.html", nome=nome, nota=nota)
+    try:
+        nome = request.form["nome"]
+        produtos = request.form["produtos"]
+        nota = prolog.emitir_nota_com_impostos_e_estoque(nome, produtos)
+    except:
+        nota = "Não foi possível gerar Nota Fiscal."
+    return render_template("nota_fiscal.html", nota=nota)
 
 
 app.run(debug=True)
