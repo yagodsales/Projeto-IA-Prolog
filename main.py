@@ -57,7 +57,7 @@ def gerar_nota_fiscal():
 
 
 @app.route(
-    "/resposta",
+    "/nota-fiscal/nota",
     methods=[
         "POST",
     ],
