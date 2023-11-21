@@ -17,11 +17,11 @@ endereco(joao, "Rua da Amostra, 123").
 endereco(maria, "Rua da festa, 654").
 
 %Definir endereço de fornecedores
-endereco(jose, "Rua da Amostra, 123").
+endereco(jose, "Rua do fornecedor Jose, 021").
 endereco(claudia, "Rua da festa, 654").
 
 % Definir os produtos e seus preços por unidade
-produto(preco(iphone, 1000)).
+produto(preco(iphone, 1250)).
 produto(preco(macbook, 1500)).
 produto(preco(apple_watch, 400)).
 produto(preco(ipad, 800)).
@@ -92,7 +92,7 @@ imprimir_produtos([(Produto, Quantidade) | Resto]) :-
     write(Produto), write(' x '), write(Quantidade), nl,
     imprimir_produtos(Resto).
 
-emitir_nota_com_impostos_e_estoque(Produtos, Cliente, Total, ICMS, ISS, PIS, PASEP, COFINS, CSLL, IRPJ, INSS, TotalComImpostos) :-
+emitir_nota_com_impostos_e_estoque(Produtos, Cliente, Fornecedor, Cliente, Endereco, Fornecedor, EnderecoFornecedor, Produtos, Total, ICMS, ISS, PIS, PASEP, COFINS, CSLL, IRPJ, INSS, TotalComImpostos) :-
     verificar_estoque(Produtos),
     calcular_total(Produtos, Total),
     calcular_icms(Total, ICMS),
@@ -105,6 +105,8 @@ emitir_nota_com_impostos_e_estoque(Produtos, Cliente, Total, ICMS, ISS, PIS, PAS
     calcular_inss(Total, INSS),
     cliente(Cliente),
     endereco(Cliente, Endereco),
+    fornecedor(Fornecedor),
+    endereco(Fornecedor, EnderecoFornecedor),
     write('Nota fiscal para: '), write(Cliente), nl,
     write('Endereço de entrega: '), write(Endereco), nl,
     imprimir_produtos(Produtos),

@@ -21,7 +21,7 @@ class PrologModel(Prolog):
         query_produtos = query_produtos[:-2]
         query_produtos += "]"
 
-        query = f"emitir_nota_com_impostos_e_estoque({query_produtos}, {nome}, Total, ICMS, ISS, PIS, PASEP, COFINS, CSLL, IRPJ, INSS, TotalComImpostos)"
+        query = f"emitir_nota_com_impostos_e_estoque({query_produtos}, {nome}, jose, Cliente, Endereco, Fornecedor, EnderecoFornecedor, Produtos, Total, ICMS, ISS, PIS, PASEP, COFINS, CSLL, IRPJ, INSS, TotalComImpostos)"
         return list(self.query(query))
 
     def cadastrar_cliente(self, nome, endereco) -> None:

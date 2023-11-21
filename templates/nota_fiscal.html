@@ -15,6 +15,11 @@
 			{% else %}
 			<table border="1">
 				<tr>
+					<td>Cliente</td>
+					<td>Endereco</td>
+					<td>Fornecedor</td>
+					<td>EnderecoFornecedor</td>
+					<td>Produtos</td>
 					<td>Total</td>
 					<td>ICMS</td>
 					<td>ISS</td>
@@ -27,6 +32,11 @@
 					<td>Total Com Impostos</td>
 				</tr>
 				<tr>
+					<td>{{ nota[0]["Cliente"] }}</td>
+					<td>{{ nota[0]["Endereco"] }}</td>
+					<td>{{ nota[0]["Fornecedor"] }}</td>
+					<td>{{ nota[0]["EnderecoFornecedor"] }}</td>
+					<td>{{ nota[0]["Produtos"] }}</td>
 					<td>{{ nota[0]["Total"] }}</td>
 					<td>{{ nota[0]["ICMS"] }}</td>
 					<td>{{ nota[0]["ISS"] }}</td>
