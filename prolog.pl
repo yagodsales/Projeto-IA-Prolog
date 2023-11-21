@@ -92,6 +92,29 @@ imprimir_produtos([(Produto, Quantidade) | Resto]) :-
     write(Produto), write(' x '), write(Quantidade), nl,
     imprimir_produtos(Resto).
 
+cadastrar_cliente(Cliente) :-
+    assertz(cliente(Cliente)),
+    write('Cliente:'), write(' [ '), write(Cliente), write(' ] cadastrado com sucesso!').
+
+cadastrar_endereco(Cliente, Endereco) :-
+ 	assertz(endereco(Cliente, Endereco)),
+    write('Endereco:'), write(' [ '), write(Cliente), write(', '), write(Endereco), write(' ] cadastrado com sucesso!').
+
+cadastrar_fornecedor(Fornecedor) :-
+	 assertz(fornecedor(Fornecedor)),
+     write('Fornecedor:'), write(' [ '), write(Fornecedor), write(' ] cadastrado com sucesso!').
+
+cadastrar_produto(Produto, Valor) :-
+	assertz(produto(preco(Produto, Valor))),
+    write('Produto:'), write(' [ '), write(Produto), write(', '), write(Valor), write(' ] cadastrado com sucesso!'). write().
+
+cadastrar_estoque(Produto, Estoque) :-
+    assertz(estoque(Produto, Estoque)),
+    write('Estoque:'), write(' [ '), write(Produto), write(', '), write(Estoque), write(' ] cadastrado com sucesso!').
+
+cancelar_nota :-
+    write('Nota fiscal cancelada com sucesso!').
+
 emitir_nota_com_impostos_e_estoque(Produtos, Cliente, Fornecedor, Cliente, Endereco, Fornecedor, EnderecoFornecedor, Produtos, Total, ICMS, ISS, PIS, PASEP, COFINS, CSLL, IRPJ, INSS, TotalComImpostos) :-
     verificar_estoque(Produtos),
     calcular_total(Produtos, Total),
@@ -121,26 +144,3 @@ emitir_nota_com_impostos_e_estoque(Produtos, Cliente, Fornecedor, Cliente, Ender
     write('INSS: $'), write(INSS), nl,
     TotalComImpostos is Total + ICMS + ISS + PIS + PASEP + COFINS + CSLL + IRPJ + INSS,
     write('Total com impostos: $'), write(TotalComImpostos).
-
-cadastrar_cliente(Cliente) :-
-    assertz(cliente(Cliente)),
-    write('Cliente:'), write(' [ '), write(Cliente), write(' ] cadastrado com sucesso!').
-
-cadastrar_endereco(Cliente, Endereco) :-
- 	assertz(endereco(Cliente, Endereco)),
-    write('Endereco:'), write(' [ '), write(Cliente), write(', '), write(Endereco), write(' ] cadastrado com sucesso!').
-
-cadastrar_fornecedor(Fornecedor) :-
-	 assertz(fornecedor(Fornecedor)),
-     write('Fornecedor:'), write(' [ '), write(Fornecedor), write(' ] cadastrado com sucesso!').
-
-cadastrar_produto(Produto, Valor) :-
-	assertz(produto(preco(Produto, Valor))),
-    write('Produto:'), write(' [ '), write(Produto), write(', '), write(Valor), write(' ] cadastrado com sucesso!'). write().
-
-cadastrar_estoque(Produto, Estoque) :-
-    assertz(estoque(Produto, Estoque)),
-    write('Estoque:'), write(' [ '), write(Produto), write(', '), write(Estoque), write(' ] cadastrado com sucesso!').
-
-cancelar_nota :-
-    write('Nota fiscal cancelada com sucesso!').

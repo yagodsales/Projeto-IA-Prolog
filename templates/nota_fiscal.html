@@ -12,43 +12,53 @@
 
 			{% if nota is iterable and nota|length == 0 %}
 			<p>Não foi possível gerar Nota Fiscal.</p>
+
 			{% else %}
-			<table border="1">
-				<tr>
-					<td>Cliente</td>
-					<td>Endereco</td>
-					<td>Fornecedor</td>
-					<td>EnderecoFornecedor</td>
-					<td>Produtos</td>
-					<td>Total</td>
-					<td>ICMS</td>
-					<td>ISS</td>
-					<td>PIS</td>
-					<td>PASEP</td>
-					<td>COFINS</td>
-					<td>CSLL</td>
-					<td>IRPJ</td>
-					<td>INSS</td>
-					<td>Total Com Impostos</td>
-				</tr>
-				<tr>
-					<td>{{ nota[0]["Cliente"] }}</td>
-					<td>{{ nota[0]["Endereco"] }}</td>
-					<td>{{ nota[0]["Fornecedor"] }}</td>
-					<td>{{ nota[0]["EnderecoFornecedor"] }}</td>
-					<td>{{ nota[0]["Produtos"] }}</td>
-					<td>{{ nota[0]["Total"] }}</td>
-					<td>{{ nota[0]["ICMS"] }}</td>
-					<td>{{ nota[0]["ISS"] }}</td>
-					<td>{{ nota[0]["PIS"] }}</td>
-					<td>{{ nota[0]["PASEP"] }}</td>
-					<td>{{ nota[0]["COFINS"] }}</td>
-					<td>{{ nota[0]["CSLL"] }}</td>
-					<td>{{ nota[0]["IRPJ"] }}</td>
-					<td>{{ nota[0]["INSS"] }}</td>
-					<td>{{ nota[0]["TotalComImpostos"] }}</td>
-				</tr>
-			</table>
+			<div style="display: flex; flex-direction: column; gap: 2rem">
+				<table border="1">
+					<tr>
+						<td>Cliente</td>
+						<td>Endereço do Cliente</td>
+						<td>Fornecedor</td>
+						<td>Endereço do Fornecedor</td>
+						<td>Produtos/Quantidades</td>
+					</tr>
+					<tr>
+						<td>{{ nota["Cliente"] }}</td>
+						<td>{{ nota["Endereco"] }}</td>
+						<td>{{ nota["Fornecedor"] }}</td>
+						<td>{{ nota["EnderecoFornecedor"] }}</td>
+						<td>{{ nota["Produtos"] }}</td>
+					</tr>
+				</table>
+
+				<table border="1">
+					<tr>
+						<td>Total</td>
+						<td>ICMS</td>
+						<td>ISS</td>
+						<td>PIS</td>
+						<td>PASEP</td>
+						<td>COFINS</td>
+						<td>CSLL</td>
+						<td>IRPJ</td>
+						<td>INSS</td>
+						<td>Total Com Impostos</td>
+					</tr>
+					<tr>
+						<td>{{ nota["Total"] }}</td>
+						<td>{{ nota["ICMS"] }}</td>
+						<td>{{ nota["ISS"] }}</td>
+						<td>{{ nota["PIS"] }}</td>
+						<td>{{ nota["PASEP"] }}</td>
+						<td>{{ nota["COFINS"] }}</td>
+						<td>{{ nota["CSLL"] }}</td>
+						<td>{{ nota["IRPJ"] }}</td>
+						<td>{{ nota["INSS"] }}</td>
+						<td>{{ nota["TotalComImpostos"] }}</td>
+					</tr>
+				</table>
+			</div>
 			{% endif %}
 		</div>
 	</body>
