@@ -5,7 +5,7 @@ class PrologModel(Prolog):
     def __init__(self) -> None:
         self.consult("prolog.pl")
 
-    def emitir_nota_com_impostos_e_estoque(self, nome, produtos) -> list:
+    def emitir_nota_com_impostos_e_estoque(self, nome, fornecedor, produtos) -> list:
         query_produtos = "["
         lista_linha_produto = produtos.split("\r\n")
 
@@ -17,7 +17,7 @@ class PrologModel(Prolog):
         query_produtos = query_produtos[:-2]
         query_produtos += "]"
 
-        query = f"emitir_nota_com_impostos_e_estoque({query_produtos}, {nome}, jose, Cliente, Endereco, Fornecedor, EnderecoFornecedor, Produtos, Total, ICMS, ISS, PIS, PASEP, COFINS, CSLL, IRPJ, INSS, TotalComImpostos)"
+        query = f"emitir_nota_com_impostos_e_estoque({query_produtos}, {nome}, {fornecedor}, Cliente, Endereco, Fornecedor, EnderecoFornecedor, Produtos, Total, ICMS, ISS, PIS, PASEP, COFINS, CSLL, IRPJ, INSS, TotalComImpostos)"
         return list(self.query(query))[0]
 
     def cadastrar_cliente(self, nome, endereco) -> None:

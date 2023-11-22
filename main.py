@@ -65,8 +65,9 @@ def gerar_nota_fiscal():
 def processa_prolog():
     try:
         nome = request.form["nome"]
+        fornecedor = request.form["fornecedor"]
         produtos = request.form["produtos"]
-        nota = prolog.emitir_nota_com_impostos_e_estoque(nome, produtos)
+        nota = prolog.emitir_nota_com_impostos_e_estoque(nome, fornecedor, produtos)
 
         nota["Endereco"] = nota["Endereco"].decode("utf-8")
         nota["EnderecoFornecedor"] = nota["EnderecoFornecedor"].decode("utf-8")
