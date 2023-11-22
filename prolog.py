@@ -21,14 +21,11 @@ class PrologModel(Prolog):
         return list(self.query(query))[0]
 
     def cadastrar_cliente(self, nome, endereco) -> None:
-        self.query(f"cadastrar_cliente({nome})")
-        self.query(f"cadastrar_endereco({nome}, {endereco})")
+        add_cliente = f"cliente({nome})"
+        add_endereco = f'endereco({nome}, "{endereco}")'
 
-        # add_cliente = f"cliente({nome})"
-        # add_endereco = f'endereco({nome}, "{endereco}")'
-
-        # self.assertz(add_cliente)
-        # self.assertz(add_endereco)
+        self.assertz(add_cliente)
+        self.assertz(add_endereco)
 
     def cadastrar_fornecedor(self, nome, endereco) -> None:
         add_fornecedor = f"fornecedor({nome})"
